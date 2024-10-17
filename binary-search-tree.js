@@ -148,14 +148,37 @@ class BinarySearchTree {
    * Return an array of visited nodes. */
 
   dfsPostOrder() {
+    const result = [];
+    const stack = [this.root];
 
+    while (stack.length) {
+        let current = stack.pop();
+
+        result.unshift(current.val);
+
+        if (current.left) stack.push(current.left);
+        if (current.right) stack.push(current.right);
+    }
+
+    return result;
   }
 
   /** bfs(): Traverse the array using BFS.
    * Return an array of visited nodes. */
 
   bfs() {
+    const result = [];
+    const queue = [this.root];
 
+    while (queue.length) {
+      let current = queue.shift();
+      result.push(current.val);
+
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return result;
   }
 
   /** Further Study!
